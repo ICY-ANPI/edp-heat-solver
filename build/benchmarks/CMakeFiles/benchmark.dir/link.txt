@@ -1,0 +1,1 @@
+/usr/bin/c++    -Wall -Wno-long-long -pedantic -march=native -fopenmp -O3   CMakeFiles/benchmark.dir/benchmarkMain.cpp.o  -o benchmark ../src/libanpi.a -lpython2.7 /usr/local/lib/libboost_filesystem.so /usr/local/lib/libboost_system.so /usr/local/lib/libboost_unit_test_framework.so -Wl,-rpath,/usr/local/lib 

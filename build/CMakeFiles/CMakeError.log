@@ -1,0 +1,42 @@
+Determining if the function LAPACKE_dgeqrf exists failed with the following output:
+Change Dir: /home/cristian/Documents/analisis numerico/eigen-system/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_7ec35/fast"
+/usr/bin/make -f CMakeFiles/cmTC_7ec35.dir/build.make CMakeFiles/cmTC_7ec35.dir/build
+make[1]: Entering directory '/home/cristian/Documents/analisis numerico/eigen-system/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_7ec35.dir/CheckFunctionExists.cxx.o
+/usr/bin/c++     -Wall -Wno-long-long -pedantic -march=native -fopenmp -DCHECK_FUNCTION_EXISTS=LAPACKE_dgeqrf   -o CMakeFiles/cmTC_7ec35.dir/CheckFunctionExists.cxx.o -c "/home/cristian/Documents/analisis numerico/eigen-system/build/CMakeFiles/CheckFunctionExists/CheckFunctionExists.cxx"
+Linking CXX executable cmTC_7ec35
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7ec35.dir/link.txt --verbose=1
+/usr/bin/c++    -Wall -Wno-long-long -pedantic -march=native -fopenmp -DCHECK_FUNCTION_EXISTS=LAPACKE_dgeqrf    CMakeFiles/cmTC_7ec35.dir/CheckFunctionExists.cxx.o  -o cmTC_7ec35 /usr/lib/liblapack.so /usr/lib/libblas.so 
+CMakeFiles/cmTC_7ec35.dir/CheckFunctionExists.cxx.o: In function `main':
+CheckFunctionExists.cxx:(.text+0x10): undefined reference to `LAPACKE_dgeqrf'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_7ec35.dir/build.make:99: recipe for target 'cmTC_7ec35' failed
+make[1]: *** [cmTC_7ec35] Error 1
+make[1]: Leaving directory '/home/cristian/Documents/analisis numerico/eigen-system/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_7ec35/fast' failed
+make: *** [cmTC_7ec35/fast] Error 2
+
+
+Determining if the function LAPACKE_dgeqrf exists failed with the following output:
+Change Dir: /home/cristian/Documents/analisis numerico/eigen-system/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_07656/fast"
+/usr/bin/make -f CMakeFiles/cmTC_07656.dir/build.make CMakeFiles/cmTC_07656.dir/build
+make[1]: Entering directory '/home/cristian/Documents/analisis numerico/eigen-system/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_07656.dir/CheckFunctionExists.cxx.o
+/usr/bin/c++     -Wall -Wno-long-long -pedantic -march=native -fopenmp -DCHECK_FUNCTION_EXISTS=LAPACKE_dgeqrf   -o CMakeFiles/cmTC_07656.dir/CheckFunctionExists.cxx.o -c "/home/cristian/Documents/analisis numerico/eigen-system/build/CMakeFiles/CheckFunctionExists/CheckFunctionExists.cxx"
+Linking CXX executable cmTC_07656
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_07656.dir/link.txt --verbose=1
+/usr/bin/c++    -Wall -Wno-long-long -pedantic -march=native -fopenmp -DCHECK_FUNCTION_EXISTS=LAPACKE_dgeqrf    CMakeFiles/cmTC_07656.dir/CheckFunctionExists.cxx.o  -o cmTC_07656 /usr/lib/liblapack.so /usr/lib/libblas.so 
+CMakeFiles/cmTC_07656.dir/CheckFunctionExists.cxx.o: In function `main':
+CheckFunctionExists.cxx:(.text+0x10): undefined reference to `LAPACKE_dgeqrf'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_07656.dir/build.make:99: recipe for target 'cmTC_07656' failed
+make[1]: *** [cmTC_07656] Error 1
+make[1]: Leaving directory '/home/cristian/Documents/analisis numerico/eigen-system/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_07656/fast' failed
+make: *** [cmTC_07656/fast] Error 2
+
+
