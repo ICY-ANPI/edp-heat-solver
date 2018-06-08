@@ -6,6 +6,7 @@
 #include "Matrix.hpp"
 #include <string>
 #include "PrintMat.hpp"
+#include <omp.h>
 
 #ifndef _GAUSS_SEIDEL_H_
 #define _GAUSS_SEIDEL_H_
@@ -39,12 +40,18 @@ void gaussSeidel(Matrix<T> &A,
         edp(A,1,1,local_threshold);
         local_threshold = abs(local_threshold);
         #pragma omp parallel
-        #pragma omp for
-        for(size_t i = 1; i < A.rows()-1; i++){
+	{
+        size_t id,Nthrds,istart,iend;
+	id = omp_get_thread_num();
+	Nthrds = omp_get_num_threads();
+	istart = id*(A.rows()-1)/Nthrds;
+	iend = (id+1)*(A.rows()-1)/Nthrds;
+	if(id == Nthrds-1)iend = A.rows()-1;
+	//cout << "id: " << id << " from: " <<  istart << " to: " << iend << " nthrd: " << Nthrds<< endl;
+        for(size_t i = istart; i < iend; i++){
             for(size_t j = 1; j < A.cols()-1; j++){
                 edp(A,i,j,calculated_threshold);
                 calculated_threshold = abs(calculated_threshold);
-                
                 /*
                 if (calculated_threshold > local_threshold){
                     cout << i << " " << j << endl;
@@ -53,6 +60,7 @@ void gaussSeidel(Matrix<T> &A,
                 local_threshold = (calculated_threshold > local_threshold)?calculated_threshold : local_threshold;
             }
         }
+	}
         //cout << "local threshold = " <<  local_threshold << endl;
     }
     cout << "final threshold = " <<  local_threshold << " final count = " << count << endl;

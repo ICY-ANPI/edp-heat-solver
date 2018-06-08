@@ -40,7 +40,7 @@ namespace anpi {
             A[x][A.cols()-1] = T(25);
             A[A.rows()-1][x] = T(25);
         }
-        const T eps = std::numeric_limits<T>::epsilon()*T(100);
+        const T eps = std::numeric_limits<T>::epsilon()*T(10);
         gaussSeidel(A,edp,eps);
 
         //printMat(A);
