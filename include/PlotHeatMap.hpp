@@ -51,6 +51,9 @@ namespace anpi {
      * curve will have the given legend 
      */
     void plot(const anpi::Matrix<T>& data);
+
+
+    void quiver(vector<T>& x,vector<T>& y, vector<T>& u,vector<T>& v);
     
     /**
      * Show all curves plotted so far.
