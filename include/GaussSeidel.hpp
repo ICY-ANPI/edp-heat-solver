@@ -38,6 +38,8 @@ void gaussSeidel(Matrix<T> &A,
         count++;
         edp(A,1,1,local_threshold);
         local_threshold = abs(local_threshold);
+        #pragma omp parallel
+        #pragma omp for
         for(size_t i = 1; i < A.rows()-1; i++){
             for(size_t j = 1; j < A.cols()-1; j++){
                 edp(A,i,j,calculated_threshold);

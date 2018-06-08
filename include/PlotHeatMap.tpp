@@ -21,7 +21,6 @@ namespace anpi {
   template <typename T>
   void PlotHeadMap<T>::initialize(int id){
     Py_Initialize();
-    PyRun_SimpleString("import seaborn as sns");
     PyRun_SimpleString("import matplotlib.pylab as plt");
   }
 
