@@ -19,6 +19,8 @@
 #include "GaussSeidel.hpp"
 #include "CalculateTemperature.hpp"
 //#include "PrintMat.hpp"
+#include "PlotHeatMap.hpp"
+
 
 namespace anpi {
   namespace test {
@@ -28,18 +30,22 @@ namespace anpi {
     void calculateHeat(const function<void(Matrix<T>&,size_t,size_t,T&)>& edp) {
 
         Matrix<T> A;
-        A.allocate(12,12);
+        A.allocate(128,128);
 
         A.fill(T(0));
-        for(size_t x = 1; x < A.cols()-1; x++){
-            A[0][x] = T(50);
+        size_t x;
+        for(x = 0; x < A.cols(); x++){
+            A[0][x] = T(x);//T(abs(128 - x));
+            A[x][0] = T(25);
+            A[x][A.cols()-1] = T(25);
+            A[A.rows()-1][x] = T(25);
         }
+        const T eps = std::numeric_limits<T>::epsilon()*T(100);
+        gaussSeidel(A,edp,eps);
 
-        gaussSeidel(A,edp,T(0.05));
+        //printMat(A);
 
-        printMat(A);
-
-
+        /*
         A.fill(T(0));
         for(size_t x = 1; x < A.cols()-1; x++){
             A[0][x] = T(50);
@@ -47,8 +53,13 @@ namespace anpi {
         }
 
         gaussSeidel(A,edp,T(0.05));
+        */
+        //printMat(A);
 
-        printMat(A);
+        PlotHeadMap<T> plot;
+        plot.initialize(0);
+        plot.plot(A);
+        plot.show();
 
 
     }
