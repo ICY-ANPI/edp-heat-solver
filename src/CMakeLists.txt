@@ -43,21 +43,8 @@ if (OPENMP_FOUND)
 endif()
 
 
-find_package(BLAS)
-find_package(LAPACK)
-if(LAPACK_FOUND AND BLAS_FOUND)
-   set(lapackblas_libraries  ${BLAS_LIBRARIES} ${LAPACK_LIBRARIES})
-   message(${lapackblas_libraries})
-endif()
-
-
-find_package(LAPACKE REQUIRED)
-if(NOT LAPACKE_FOUND)
-  message("LAPACKE WAS NOT FOUND!")
-endif()
-
 CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/cmake/AnpiConfig.hpp.in ${CMAKE_SOURCE_DIR}/include/AnpiConfig.hpp)
 
 add_library(anpi STATIC ${SRCS} ${HEADERS})
 add_executable(tarea03 main.cpp)
-target_link_libraries(tarea03 anpi python2.7 ${lapackblas_libraries})
+target_link_libraries(tarea03 anpi python2.7)
