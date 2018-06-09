@@ -21,6 +21,7 @@ int option_reader(int argc, char** argv)
   { 
     /** Define and parse the program options 
      */ 
+    //http://www.radmangames.com/programming/how-to-use-boost-program_options
     namespace po = boost::program_options; 
     po::options_description desc("Options"); 
     int t,b,l,d,h,v,g = 0;
