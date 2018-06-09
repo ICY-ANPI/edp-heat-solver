@@ -80,7 +80,10 @@ void gaussSeidelOpenMP(Matrix<T> &A,
         //Por esta razon se realiza un refinamiento sobre la matriz
         //Esto suaviza dichas lineas, El algoritmo converge a una razon similar 
         //que lo hace el openmp
-        gaussSeidelAux(A, (size_t)1, (size_t)1, edp, local_threshold);
+        T calculated_threshold = local_threshold;
+        gaussSeidelAux(A, (size_t)1, A.rows()-1, edp, calculated_threshold);
+        calculated_threshold = abs(calculated_threshold);
+        local_threshold = (calculated_threshold > local_threshold) ? calculated_threshold : local_threshold;
         //cout << "local threshold = " <<  local_threshold << endl;
     }
     //cout << "final threshold = " <<  local_threshold << " final count = " << count << endl;
@@ -94,15 +97,18 @@ void gaussSeidel(Matrix<T> &A,
 
     if (A.rows() < 3 && A.cols() < 3)
         throw Exception(ERROR_MESSAGE.c_str());
-    T local_threshold = T(threshold + T(1));
+    T calculated_threshold,local_threshold = T(threshold + T(1));
     int count = 0;
     while (local_threshold > threshold)
     {
         count++;
         edp(A, 1, 1, local_threshold);
         local_threshold = abs(local_threshold);
-        gaussSeidelAux(A, (size_t)1, A.rows(), edp, local_threshold);
-        //cout << "local threshold = " <<  local_threshold << endl;
+        calculated_threshold = local_threshold;
+        gaussSeidelAux(A, (size_t)1, A.rows()-1, edp, calculated_threshold);
+        calculated_threshold = abs(calculated_threshold);
+        local_threshold = (calculated_threshold > local_threshold) ? calculated_threshold : local_threshold;
+        //cout << "local threshold = " <<  local_threshold << " "<<threshold << endl;
     }
     //cout << "final threshold = " <<  local_threshold << " final count = " << count << endl;
 }
