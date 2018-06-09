@@ -1,0 +1,1 @@
+int option_reader(int argc, char** argv);

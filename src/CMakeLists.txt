@@ -5,7 +5,7 @@
 # Author: Pablo Alvarado
 # Date  : 28.12.2017
 
-find_package (Boost COMPONENTS system filesystem REQUIRED)
+find_package (Boost COMPONENTS system filesystem program_options REQUIRED)
 include_directories (${CMAKE_SOURCE_DIR}/include ${Boost_INCLUDE_DIRS})
 
 file(GLOB SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *.cpp)
@@ -46,5 +46,7 @@ endif()
 CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/cmake/AnpiConfig.hpp.in ${CMAKE_SOURCE_DIR}/include/AnpiConfig.hpp)
 
 add_library(anpi STATIC ${SRCS} ${HEADERS})
-add_executable(tarea03 main.cpp)
-target_link_libraries(tarea03 anpi python2.7)
+add_executable(proyecto03 main.cpp)
+target_link_libraries(proyecto03 anpi python2.7 ${Boost_FILESYSTEM_LIBRARY}
+                       ${Boost_SYSTEM_LIBRARY}
+                       ${Boost_PROGRAM_OPTIONS_LIBRARY})
